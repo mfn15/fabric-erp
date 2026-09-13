@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fabric ERP</title>
+<link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+<div id="login-screen" class="screen">
+  <form id="login-form" class="login-card">
+    <h1>Fabric ERP</h1>
+    <p class="subtitle">Printing &amp; Stock Management</p>
+    <input id="login-username" type="text" placeholder="Username" autocomplete="username" required>
+    <input id="login-password" type="password" placeholder="Password" autocomplete="current-password" required>
+    <button type="submit">Log In</button>
+    <p id="login-error" class="error-text"></p>
+    <p class="hint">Demo: admin/admin123 or staff/staff123</p>
+  </form>
+</div>
+
+<div id="app-screen" class="screen" hidden>
+  <nav class="sidebar">
+    <h2>Fabric ERP</h2>
+    <button class="nav-btn active" data-view="dashboard">Dashboard</button>
+    <button class="nav-btn" data-view="orders">Print Orders</button>
+    <button class="nav-btn" data-view="new-order">New Order</button>
+    <button class="nav-btn" data-view="stock">Fabric Stock</button>
+    <button class="nav-btn" data-view="employees">Employees</button>
+    <button class="nav-btn" data-view="reports">Reports</button>
+    <div class="sidebar-footer">
+      <span id="current-user-name"></span>
+      <button id="logout-btn">Log Out</button>
+    </div>
+  </nav>
+
+  <main class="content">
+    <section id="view-dashboard" class="view active">
+      <h1>Dashboard</h1>
+      <div id="dashboard-stats" class="stat-grid"></div>
+      <h2>Low Fabric Stock</h2>
+      <table class="data-table"><thead><tr><th>Type</th><th>Color</th><th>Meters Left</th></tr></thead><tbody id="low-stock-body"></tbody></table>
+    </section>
+
+    <section id="view-orders" class="view">
+      <h1>Print Orders</h1>
+      <table class="data-table">
+        <thead><tr><th>Order #</th><th>Customer</th><th>Fabric</th><th>Meters</th><th>Total</th><th>Paid</th><th>Status</th><th>Payment</th><th>Actions</th></tr></thead>
+        <tbody id="orders-body"></tbody>
+      </table>
+    </section>
+
+    <section id="view-new-order" class="view">
+      <h1>New Print Order</h1>
+      <div class="invoice-form">
+        <select id="no-customer"></select>
+        <select id="no-fabric"></select>
+        <input id="no-meters" type="number" placeholder="Meters to use" min="1">
+        <input id="no-rate" type="number" placeholder="Printing rate per meter">
+        <input id="no-design" placeholder="Design description">
+        <input id="no-paid" type="number" placeholder="Amount paid now" value="0">
+        <button id="no-submit" class="primary-btn">Create Order</button>
+      </div>
+    </section>
+
+    <section id="view-stock" class="view">
+      <h1>Fabric Stock</h1>
+      <table class="data-table">
+        <thead><tr><th>Type</th><th>Color</th><th>Meters Available</th><th>Cost/Meter</th><th>Supplier</th></tr></thead>
+        <tbody id="stock-body"></tbody>
+      </table>
+      <h2>Record a Purchase</h2>
+      <div class="invoice-form">
+        <select id="purchase-fabric"></select>
+        <input id="purchase-meters" type="number" placeholder="Meters purchased">
+        <input id="purchase-cost" type="number" placeholder="Cost per meter">
+        <button id="purchase-submit" class="primary-btn">Record Purchase</button>
+      </div>
+    </section>
+
+    <section id="view-employees" class="view">
+      <h1>Employees</h1>
+      <table class="data-table">
+        <thead><tr><th>Name</th><th>Designation</th><th>Monthly Salary</th><th>Actions</th></tr></thead>
+        <tbody id="employees-body"></tbody>
+      </table>
+    </section>
+
+    <section id="view-reports" class="view">
+      <h1>Profit &amp; Loss</h1>
+      <div id="pl-summary" class="stat-grid"></div>
+    </section>
+  </main>
+</div>
+
+<script src="/js/app.js"></script>
+</body>
+</html>
